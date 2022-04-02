@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace WuerfelspielTests
 {
+    [TestClass]
     internal class BecherTests
     {
+        [TestMethod]
+        public void WuerfelWuerfeln()
+        {
+
+        }
     }
 }
