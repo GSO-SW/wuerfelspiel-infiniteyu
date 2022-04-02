@@ -71,5 +71,18 @@ namespace WuerfelspielTests
 
             wuerfel1.SicherungUmschalten();
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void WuerfelAnlegenFehlgeschlagen()
+        {
+            Wuerfel wuerfel1;
+
+            wuerfel1 = new Wuerfel(-1);
+
+            Assert.IsTrue(wuerfel1 != null);
+        }
+
+        
     }
 }
