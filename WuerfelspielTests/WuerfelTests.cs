@@ -8,79 +8,75 @@ namespace WuerfelspielTests
     public class WuerfelTests
     {
         [TestMethod]
-        public void DummyTest()
+        public void WuerfelAnlegenIstErfolgreich()
         {
-            // Dieser Test ist hier, um eine GitHub-Funktion zu testen. 
-            // Einfach löschen :)
-            Assert.IsTrue(true);// is tatsächlich true :O
-        }
+            //Arrange 
+            Wuerfel wuerfeln;
 
-        [TestMethod]
-        public void WuerfelAnlegenErfolgreich()
-        {
-            Wuerfel wuerfel1;
+            //Act
+            wuerfeln = new Wuerfeln(6);
 
-            wuerfel1 = new Wuerfel(6);
-
-            Assert.IsTrue(wuerfel1 != null);
+            //Assert
+            Assert.IsTrue(wuerfeln != null);
         }
 
         [TestMethod]
         public void AnzahlSeitenAbrufen()
         {
-            Wuerfel wuerfel1;
+            //Arrange 
+            Wuerfel wuerfeln;
             int seitenAnzahl = 6;
+           
+            //Act
+            wuerfeln = new Wuerfel(seitenAnzahl);          
 
-            wuerfel1 = new Wuerfel(seitenAnzahl);
-            Console.WriteLine(wuerfel1.AnzahlSeiten);
-
-            Assert.IsEqual(wuerfel1.AnzahlSeiten, seitenAnzahl);
+            //Assert
+            Assert.AreEqual(wuerfeln.AnzahlSeiten, seitenAnzahl);
         }
 
         [TestMethod]
         public void WuerfelWuerfeln()
         {
-            Wuerfel wuerfel1;
+            //Arrange 
+            Wuerfel wuerfeln;
             int seitenAnzahl = 6;
 
-            wuerfel1 = new Wuerfel(seitenAnzahl);
-            wuerfel1.wuerfeln();
 
+            //Act
+            wuerfeln = new Wuerfel(seitenAnzahl);
+           int wuerfelzahl = wuerfeln.wuerfeln();
+            
+            //Assert
+            Assert.AreEqual(wuerfelzahl = wuerfeln.WuerfelZahl);
+            
         }
 
         [TestMethod]
         public void LetztesErgebnisAbrufen()
         {
-            Wuerfel wuerfel1;
+            //Arrange 
+            Wuerfel wuerfeln;
             int seitenAnzahl = 6;
 
-            wuerfel1 = new Wuerfel(seitenAnzahl);
-            wuerfel1.wuerfeln();
+            //Act
+            wuerfeln = new Wuerfel(seitenAnzahl);
+            wuerfeln.wuerfeln();
 
-            wuerfel1.LetztesErgebnis;
-        }
-
-        [TestMethod]
-        public void WuerfelSichern()
-        {
-            Wuerfel wuerfel1;
-            int seitenAnzahl = 6;
-
-            wuerfel1 = new Wuerfel(seitenAnzahl);
-            wuerfel1.wuerfeln();
-
-            wuerfel1.SicherungUmschalten();
+            //Assert
+            Assert.IsNotNull(wuerfeln.LetztesErgebnis);
+            
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void WuerfelAnlegenFehlgeschlagen()
+        public void WuerfelAnlegenFehlgeschlagenMinusTest()
         {
-            Wuerfel wuerfel1;
+            //Arrange 
 
-            wuerfel1 = new Wuerfel(-1);
+            Wuerfel wuerfeln;
 
-            Assert.IsTrue(wuerfel1 != null);
+            //Act
+            wuerfeln = new Wuerfel(-1);
         }
 
         
